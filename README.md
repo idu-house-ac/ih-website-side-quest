@@ -78,7 +78,7 @@ The reel autoplays muted, loops and plays inline. When the visitor has reduced m
 2. Run the scan above.
 3. Commit and push to `main`. The workflow in `.github/workflows/deploy-public.yml` publishes the `public/` folder to GitHub Pages on every push that touches it.
 
-One-time setup (Amadin's call before it goes live): in the repository settings, set Pages to deploy from GitHub Actions, add the custom domain, and add a `public/CNAME` file containing that hostname. The DNS record is a CNAME from the chosen subdomain to `idu-house-ac.github.io`, added wherever iduhouse.com's DNS is managed. Do not touch the apex or `www` records, which belong to Squarespace.
+One-time setup (Amadin's call before it goes live): in the repository settings, set Pages to deploy from GitHub Actions, add the custom domain, and add a `public/CNAME` file (already present, containing `whatis.iduhouse.com`). The DNS record is a CNAME from the chosen subdomain to `idu-house-ac.github.io`, added wherever iduhouse.com's DNS is managed. Do not touch the apex or `www` records, which belong to Squarespace.
 
 ## Updating the investor page
 
