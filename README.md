@@ -3,10 +3,17 @@
 Two static pages, deployed as two separate projects so the investor page's access control can never leak onto the public page or the other way around. No build step, no framework.
 
 ```
-public/      This Is Idu House (open, indexed)         -> GitHub Pages
-investor/    Idu House Pre-Seed (gated, never indexed)  -> Vercel with password protection
+public/      This Is Idu House (open, indexed)         -> GitHub Pages   https://whatis.iduhouse.com
+investor/    Idu House Pre-Seed (gated, never indexed)  -> Vercel         https://investor.iduhouse.com (password)
 source/      original reel (.mov), git-ignored
 ```
+
+DNS for both lives at the businessidentity.llc nameservers that serve iduhouse.com:
+
+| Host | Type | Value |
+|---|---|---|
+| `whatis` | CNAME | `idu-house-ac.github.io` |
+| `investor` | CNAME | the `*.vercel-dns-016.com` target Vercel assigned to the project |
 
 ## Rules that apply to both pages
 
@@ -86,7 +93,7 @@ One-time setup (Amadin's call before it goes live): in the repository settings, 
 2. Run the scan above.
 3. Commit and push to `main`. The Vercel project redeploys from the `investor/` folder.
 
-One-time setup (Amadin's call before it goes live): create a Vercel project from this repo with the root directory set to `investor` and framework preset "Other". Turn on password protection in the project's deployment protection settings, covering production and preview deployments. Add the custom domain in Vercel and create the CNAME it asks for.
+Already done: a Vercel project was created from this repo with the root directory set to `investor` and framework preset "Other". Turn on password protection in the project's deployment protection settings, covering production and preview deployments. Add the custom domain in Vercel and create the CNAME it asks for.
 
 What protects the page:
 
