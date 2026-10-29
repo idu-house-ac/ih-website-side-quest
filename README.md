@@ -56,7 +56,7 @@ The public page's canonical and Open Graph URLs are hard-coded in the `<head>` o
 Put the original in `source/` (it stays out of git), then:
 
 ```bash
-ffmpeg -i "source/IH Reel 1.mov" -an -c:v libx264 -preset slow -crf 23 \
+ffmpeg -i "source/IH Reel 1.mov" -an -c:v libx264 -preset slow -crf 26 \
   -pix_fmt yuv420p -movflags +faststart -vf "scale=1920:-2" reel-1080.mp4
 ```
 
@@ -68,7 +68,7 @@ ffmpeg -ss 2 -i reel-1080.mp4 -frames:v 1 -q:v 3 reel-poster.jpg
 ffmpeg -ss 2 -i reel-1080.mp4 -frames:v 1 -q:v 3 -vf "scale=1200:630:force_original_aspect_ratio=increase,crop=1200:630" og-image.jpg
 ```
 
-Keep `reel-1080.mp4` under about 15 MB. If it comes out larger, raise `-crf` a step or two and check it still looks clean. Copy the mp4 and poster into both `assets/` folders, and the OG image into `public/assets/`.
+The current file was encoded at CRF 26 (15.1 MB). CRF 23 came out at 22.3 MB and looked no better at 1:1. The poster and OG image use the 2-second frame as a placeholder until Amadin picks a second. Copy the mp4 and poster into both `assets/` folders, and the OG image into `public/assets/`.
 
 The reel autoplays muted, loops and plays inline. When the visitor has reduced motion turned on, it does not autoplay. The poster shows with a "Play reel" button that starts and stops the loop. That behaviour is the small inline script directly after each `<video>`.
 
