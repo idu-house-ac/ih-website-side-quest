@@ -1,0 +1,1382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Idu House Pre-Seed</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Marcellus&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+  :root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  img, video { max-width: 100%; }
+  [hidden] { display: none !important; }
+
+  /* Layout: a ledger. A label column on the left, the argument on the right, ruled in clay.
+     Ebony bands carry the thesis, the round and the close; a roof peak marks each step into the dark. */
+  :root {
+    --ebony: #1B1B1B;
+    --sand: #F6F1E9;
+    --sand-deep: #EDE4D5;
+    --clay: #7C4A2E;
+    --gold: #D4A055;
+    --sage: #A6B59F;
+    --ink: #1B1B1B;
+    --ink-muted: #5B544B;
+    --rule: rgba(124, 74, 46, 0.24);
+    --track: rgba(124, 74, 46, 0.12);
+    --on-dark: #F6F1E9;
+    --on-dark-muted: rgba(246, 241, 233, 0.74);
+    --rule-dark: rgba(212, 160, 85, 0.30);
+    --track-dark: rgba(246, 241, 233, 0.12);
+    --display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    --label: "Marcellus", "Optima", "Candara", Georgia, serif;
+    --body: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+    --head-h: 58px;
+    color-scheme: light;
+  }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--sand);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0 0 auto;
+    height: env(safe-area-inset-top, 0px);
+    z-index: 30;
+    background: var(--ebony);
+  }
+  p, ul, ol, h1, h2, h3, h4, figure { margin: 0; }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  .wrap {
+    max-width: 1160px;
+    margin-inline: auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  @media (min-width: 720px) {
+    .wrap {
+      padding-left: max(40px, env(safe-area-inset-left, 0px));
+      padding-right: max(40px, env(safe-area-inset-right, 0px));
+    }
+  }
+
+  /* ---------- Sticky bar ---------- */
+  .bar {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    background: var(--ebony);
+    color: var(--on-dark);
+    border-bottom: 1px solid var(--rule-dark);
+  }
+  .bar .wrap {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    min-height: var(--head-h);
+  }
+  .mark {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.45rem;
+    color: var(--gold);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .conf {
+    font-family: var(--label);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--sage);
+    white-space: nowrap;
+  }
+  .bar nav {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 22px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-block: 6px;
+  }
+  .bar nav::-webkit-scrollbar { display: none; }
+  .bar nav a {
+    font-family: var(--label);
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--on-dark-muted);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .bar nav a:hover { color: var(--gold); }
+  @media (max-width: 980px) {
+    .conf { display: none; }
+    .bar nav { justify-content: flex-start; }
+  }
+
+  /* ---------- Type ---------- */
+  .eyebrow, .tag, th, .chip, .k {
+    font-family: var(--label);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: 400;
+  }
+  .eyebrow { font-size: 0.78rem; color: var(--sage); }
+  h1, h2, h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    text-wrap: balance;
+  }
+  h2 {
+    font-size: clamp(2rem, 4.4vw, 3.05rem);
+    line-height: 1.06;
+    letter-spacing: -0.005em;
+    max-width: 22ch;
+  }
+  h2 em, h1 em { font-style: italic; }
+  h3 {
+    font-size: 1.55rem;
+    line-height: 1.15;
+    font-weight: 600;
+  }
+  .prose { display: grid; gap: 1em; max-width: 64ch; }
+  .muted { color: var(--ink-muted); }
+  .small { font-size: 0.9rem; }
+  .note {
+    font-size: 0.84rem;
+    line-height: 1.5;
+    color: var(--ink-muted);
+    max-width: 72ch;
+  }
+  .num { font-variant-numeric: tabular-nums lining-nums; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background: var(--ebony);
+    color: var(--on-dark);
+  }
+  .hero .wrap {
+    padding-block: clamp(64px, 10vw, 128px) clamp(56px, 8vw, 104px);
+    display: grid;
+    gap: 28px;
+  }
+  .hero h1 {
+    font-size: clamp(2.7rem, 7.4vw, 5.6rem);
+    line-height: 1;
+    letter-spacing: -0.012em;
+    max-width: 15ch;
+  }
+  .hero h1 em { color: var(--gold); }
+  .hero .lede {
+    max-width: 60ch;
+    font-size: clamp(1.08rem, 1.6vw, 1.22rem);
+    color: var(--on-dark-muted);
+  }
+  .hero .lede strong { color: var(--on-dark); font-weight: 600; }
+  .terms {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0 32px;
+    margin-top: 12px;
+    max-width: 920px;
+  }
+  .terms > div {
+    border-top: 1px solid var(--gold);
+    padding-top: 14px;
+    display: grid;
+    gap: 4px;
+    min-width: 0;
+  }
+  .terms .k { font-size: 0.7rem; color: var(--sage); }
+  .terms .v {
+    font-family: var(--display);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    line-height: 1.1;
+    font-weight: 500;
+  }
+  .hero .cue {
+    justify-self: start;
+    font-family: var(--label);
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 4px;
+    margin-top: 8px;
+  }
+  .hero .cue:hover { color: var(--on-dark); border-color: var(--on-dark); }
+  @media (max-width: 640px) {
+    .terms { grid-template-columns: 1fr; gap: 18px; }
+  }
+
+  /* ---------- Ledger sections ---------- */
+  .ledger {
+    display: grid;
+    grid-template-columns: minmax(150px, 210px) minmax(0, 1fr);
+    gap: 20px 56px;
+    padding-block: clamp(56px, 8vw, 96px);
+    border-top: 1px solid var(--rule);
+    scroll-margin-top: calc(env(safe-area-inset-top, 0px) + var(--head-h));
+  }
+  .wrap > .ledger:first-child { border-top: 0; }
+  .lead-k { font-family: var(--label); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--clay); margin-bottom: 8px; }
+  .bars.funds .bar-row { grid-template-columns: minmax(150px, 290px) minmax(0, 1fr) 118px; }
+  @media (max-width: 520px) { .bars.funds .bar-row { grid-template-columns: minmax(0, 1fr) 108px; } }
+  .tag {
+    font-size: 0.76rem;
+    color: var(--clay);
+    align-self: start;
+    position: sticky;
+    top: calc(env(safe-area-inset-top, 0px) + var(--head-h) + 28px);
+    padding-top: 10px;
+  }
+  .body { min-width: 0; display: grid; gap: 28px; align-content: start; }
+  @media (max-width: 800px) {
+    .ledger { grid-template-columns: 1fr; gap: 14px; }
+    .tag { position: static; padding-top: 0; }
+  }
+
+  /* ---------- Pieces ---------- */
+  .two {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 40px;
+  }
+  .two > div { min-width: 0; display: grid; gap: 10px; align-content: start; }
+  .two .k { font-size: 0.72rem; color: var(--clay); }
+  .kicker-line {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.35rem;
+    line-height: 1.25;
+    color: var(--clay);
+  }
+  @media (max-width: 680px) { .two { grid-template-columns: 1fr; } }
+
+  .statement {
+    font-family: var(--display);
+    font-size: clamp(1.5rem, 2.6vw, 1.95rem);
+    line-height: 1.22;
+    max-width: 34ch;
+  }
+  .statement + .statement { margin-top: 4px; }
+  .statement .k { display: block; font-size: 0.72rem; color: var(--clay); margin-bottom: 6px; font-family: var(--label); }
+
+  /* Status rows */
+  .rows { display: grid; }
+  .row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 6px 24px;
+    padding-block: 16px;
+    border-top: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .row:last-child { border-bottom: 1px solid var(--rule); }
+  .row h4 {
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  .row p { grid-column: 1 / -1; color: var(--ink-muted); font-size: 0.97rem; max-width: 66ch; }
+  .chip {
+    font-size: 0.66rem;
+    padding: 4px 10px 3px;
+    border-radius: 2px;
+    border: 1px solid var(--ink);
+    white-space: nowrap;
+    justify-self: end;
+  }
+  .chip.live { background: var(--ink); color: var(--sand); }
+  .chip.build { border-color: var(--clay); color: var(--clay); }
+  .chip.later { border-style: dashed; border-color: var(--ink-muted); color: var(--ink-muted); }
+
+  /* Loop */
+  .loop {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+    counter-reset: step;
+    border-top: 1px solid var(--clay);
+    border-bottom: 1px solid var(--clay);
+  }
+  .loop li {
+    counter-increment: step;
+    padding: 18px 18px 18px 0;
+    position: relative;
+    min-width: 0;
+    display: grid;
+    gap: 6px;
+    align-content: start;
+    font-size: 0.97rem;
+  }
+  .loop li + li { padding-left: 18px; border-left: 1px solid var(--rule); }
+  .loop li::before {
+    content: counter(step);
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--clay);
+  }
+  .loop-back {
+    font-family: var(--label);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--clay);
+  }
+  @media (max-width: 760px) {
+    .loop { grid-template-columns: 1fr; }
+    .loop li, .loop li + li { padding: 14px 0; border-left: 0; }
+    .loop li + li { border-top: 1px solid var(--rule); }
+  }
+
+  /* Steps (Threshold flow) */
+  .steps { list-style: none; padding: 0; display: grid; counter-reset: s; }
+  .steps li {
+    counter-increment: s;
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 12px;
+    padding-block: 12px;
+    border-top: 1px solid var(--rule);
+  }
+  .steps li:last-child { border-bottom: 1px solid var(--rule); }
+  .steps li::before {
+    content: counter(s);
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.6rem;
+    line-height: 1.1;
+    color: var(--clay);
+  }
+
+  /* Stats */
+  .stats { display: grid; }
+  .stat {
+    display: grid;
+    grid-template-columns: minmax(130px, 220px) minmax(0, 1fr);
+    gap: 8px 32px;
+    padding-block: 18px;
+    border-top: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .stat:last-child { border-bottom: 1px solid var(--rule); }
+  .stat .fig {
+    font-family: var(--display);
+    font-size: clamp(2rem, 3.6vw, 2.6rem);
+    line-height: 1;
+    color: var(--clay);
+    font-weight: 500;
+    font-variant-numeric: lining-nums;
+  }
+  .stat p { max-width: 58ch; }
+  @media (max-width: 560px) { .stat { grid-template-columns: 1fr; } }
+
+  /* Tables */
+  .tbl { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.94rem;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+  .tbl.wide table { min-width: 680px; }
+  .tbl.mid table { min-width: 540px; }
+  th {
+    font-size: 0.68rem;
+    color: var(--clay);
+    text-align: left;
+    padding: 0 16px 10px 0;
+    border-bottom: 1px solid var(--clay);
+    vertical-align: bottom;
+  }
+  td {
+    padding: 12px 16px 12px 0;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  td.r, th.r { text-align: right; }
+  tr.total td { font-weight: 600; border-bottom: 1px solid var(--clay); }
+  td .muted { font-size: 0.86rem; }
+
+  details {
+    border-top: 1px solid var(--clay);
+    border-bottom: 1px solid var(--clay);
+  }
+  summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 14px 0;
+    font-family: var(--label);
+    font-size: 0.76rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--clay);
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; font-size: 1.1rem; line-height: 1; }
+  details[open] summary::after { content: "\2212"; }
+  details > .inner { padding-bottom: 22px; display: grid; gap: 18px; }
+  details + details { border-top: 0; }
+
+  /* Bars (magnitude, one hue; identity lives in the row label) */
+  .bars { display: grid; gap: 2px; }
+  .bar-row {
+    display: grid;
+    grid-template-columns: minmax(120px, 190px) minmax(0, 1fr) 82px;
+    gap: 14px;
+    align-items: center;
+    padding-block: 7px;
+    font-size: 0.94rem;
+  }
+  .bar-row .lbl { min-width: 0; }
+  .bar-row .val { text-align: right; font-variant-numeric: tabular-nums lining-nums; font-weight: 500; }
+  .track { height: 12px; background: var(--track); position: relative; }
+  .fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: var(--w);
+    background: var(--clay);
+    border-radius: 0 4px 4px 0;
+  }
+  .bar-row.zero .val { color: var(--ink-muted); font-weight: 400; }
+  @media (max-width: 520px) {
+    .bar-row { grid-template-columns: minmax(0, 1fr) 72px; gap: 4px 12px; }
+    .bar-row .lbl { grid-column: 1 / -1; }
+    .bar-row .track { grid-column: 1; }
+  }
+
+  .years {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+  }
+  .year {
+    display: grid;
+    gap: 10px;
+    align-content: start;
+    border-top: 1px solid var(--clay);
+    padding-top: 14px;
+    min-width: 0;
+  }
+  .year .k { font-size: 0.72rem; color: var(--clay); }
+  .year .big {
+    font-family: var(--display);
+    font-size: clamp(2.4rem, 4.6vw, 3.3rem);
+    line-height: 1;
+    font-weight: 500;
+  }
+  .year ul { padding-left: 1.1em; display: grid; gap: 6px; font-size: 0.95rem; }
+  .year ul li::marker { color: var(--clay); }
+  @media (max-width: 760px) { .years { grid-template-columns: 1fr; } }
+
+  .bridge { display: grid; gap: 26px; }
+  .bridge h4 {
+    font-family: var(--label);
+    font-weight: 400;
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--clay);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 6px;
+  }
+  .bridge h4 span { font-variant-numeric: tabular-nums lining-nums; color: var(--ink); }
+
+  /* Slate */
+  .slate { display: grid; }
+  .slate .item {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) auto;
+    gap: 4px 20px;
+    padding-block: 14px;
+    border-top: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .slate .item:last-child { border-bottom: 1px solid var(--rule); }
+  .slate .t { font-family: var(--display); font-style: italic; font-size: 1.45rem; line-height: 1.15; font-weight: 600; }
+  .slate .t .yr { font-style: normal; font-family: var(--body); font-size: 0.85rem; font-weight: 400; color: var(--ink-muted); margin-left: 6px; }
+  .slate .f { color: var(--ink-muted); font-size: 0.95rem; }
+  @media (max-width: 640px) {
+    .slate .item { grid-template-columns: minmax(0, 1fr) auto; }
+    .slate .f { grid-column: 1 / -1; order: 3; }
+  }
+
+  /* Team */
+  .team { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+  .person { display: grid; gap: 8px; align-content: start; border-top: 1px solid var(--clay); padding-top: 16px; min-width: 0; }
+  .person .role { font-family: var(--label); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--clay); }
+  .person .line { font-family: var(--display); font-style: italic; font-size: 1.25rem; line-height: 1.2; }
+  .person p { font-size: 0.95rem; }
+  .person .prev { font-size: 0.84rem; color: var(--ink-muted); }
+  .also { font-size: 0.95rem; color: var(--ink-muted); }
+  .also strong { color: var(--ink); font-weight: 600; }
+  @media (max-width: 860px) { .team { grid-template-columns: 1fr; } }
+
+  /* ---------- Roof (the signature transition into dark bands) ---------- */
+  .roof { display: block; width: 100%; height: clamp(26px, 4.2vw, 58px); background: var(--sand); }
+  .roof svg { display: block; width: 100%; height: 100%; }
+
+  /* ---------- Dark bands ---------- */
+  .dark { background: var(--ebony); color: var(--on-dark); }
+  .dark .ledger { border-top-color: var(--rule-dark); }
+  .dark .tag { color: var(--gold); }
+  .dark h2 em { color: var(--gold); }
+  .dark .muted, .dark .note { color: var(--on-dark-muted); }
+  .dark .track { background: var(--track-dark); }
+  .dark .fill { background: var(--gold); }
+  .dark .bar-row .lbl small { color: var(--on-dark-muted); }
+  .dark .two .k { color: var(--gold); }
+  .dark .rule-top { border-top: 1px solid var(--rule-dark); padding-top: 18px; }
+  .bar-row .lbl small { display: block; font-size: 0.82rem; color: var(--ink-muted); line-height: 1.4; }
+
+  .contacts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; max-width: 760px; }
+  .contact { border-top: 1px solid var(--gold); padding-top: 14px; display: grid; gap: 4px; min-width: 0; }
+  .contact .nm { font-family: var(--display); font-size: 1.6rem; line-height: 1.1; }
+  .contact .rl { font-family: var(--label); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage); }
+  .email { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
+  .email span { user-select: all; font-size: 1rem; }
+  .copy {
+    font-family: var(--label);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    padding: 5px 10px 4px;
+    cursor: pointer;
+  }
+  .copy:hover { background: var(--gold); color: var(--ebony); }
+  @media (max-width: 600px) { .contacts { grid-template-columns: 1fr; } }
+
+  .foot { background: var(--gold); color: var(--ebony); }
+  .foot .wrap {
+    padding-block: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 24px;
+    font-family: var(--label);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* Reel */
+  .reel-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; background: var(--ebony); }
+  .reel { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .reel-play {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--label);
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    background: rgba(27, 27, 27, 0.72);
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    padding: 14px 24px 13px;
+    cursor: pointer;
+  }
+  .reel-play:hover { background: var(--gold); color: var(--ebony); }
+  .reel-fig { display: grid; gap: 10px; }
+  .reel-fig .reel-frame { border: 1px solid var(--clay); }
+  .reel-fig figcaption { font-size: 0.72rem; color: var(--clay); }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a class="mark" href="#top">Idu House</a>
+    <span class="conf">Pre-seed &middot; Shared in confidence</span>
+    <nav aria-label="Sections">
+      <a href="#company">Company</a>
+      <a href="#threshold">Threshold</a>
+      <a href="#market">Market</a>
+      <a href="#traction">Traction</a>
+      <a href="#model">Model</a>
+      <a href="#projections">Projections</a>
+      <a href="#team">Team</a>
+      <a href="#round">The round</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">Idu House &middot; said EE-doo &middot; A Possibility Engine for Creators</p>
+    <h1>The people who make the culture should <em>own it.</em></h1>
+    <p class="lede">Idu House is a <strong>Black-owned independent studio</strong> making films, series, animation and music, with two revenue lines open today. This round builds <strong>Threshold</strong>, the platform that helps independent Creators turn ideas into paid, owned work, and scales the studio that proves it.</p>
+    <div class="terms">
+      <div><span class="k">Raising</span><span class="v num">$1.5M pre-seed</span></div>
+      <div><span class="k">Instrument</span><span class="v num">Post-money SAFE, $5M cap</span></div>
+      <div><span class="k">Target runway</span><span class="v num">18 to 24 months</span></div>
+    </div>
+    <a class="cue" href="#company">Read the brief</a>
+  </div>
+</section>
+
+<main>
+  <div class="wrap">
+    <!-- Why we exist -->
+    <section class="ledger" id="why" aria-label="Vision and mission">
+      <p class="tag">Why we exist</p>
+      <div class="body">
+        <p class="statement"><span class="k">Vision</span>A future where the people who make the culture also own it.</p>
+        <p class="statement"><span class="k">Mission</span>We build the platform Creators need, produce the films, animation and music that prove it, and structure creator deals so they keep what they make.</p>
+        <p class="statement"><span class="k">Why it matters</span>Talent is everywhere. Access isn&rsquo;t. Most creative systems show up only after someone has proven themselves. Idu House is built to show up earlier.</p>
+      </div>
+    </section>
+
+    <!-- The name -->
+    <section class="ledger" id="name" aria-labelledby="name-h">
+      <p class="tag">The name</p>
+      <div class="body">
+        <h2 id="name-h">Idu, said EE-doo. <em>A place where things begin.</em></h2>
+        <div class="two">
+          <div>
+            <p class="k">Origin</p>
+            <p>Idu is an older historical name for the Edo people and Edo land in present-day Nigeria. In Edo cosmology, the land once called Idu is understood as the origin of the world. Idu House exists to be a place where things begin: where creators find themselves, collaborators meet and stories become films.</p>
+          </div>
+          <div>
+            <p class="k">Afrofuturism</p>
+            <p>The house is intentionally rooted in Afrofuturism, building futures from African and diasporic history, identity and invention. That cultural voice is the founders&rsquo; own, and it&rsquo;s the part of the model that can&rsquo;t be fabricated.</p>
+          </div>
+        </div>
+        <p class="kicker-line">Rooted in where we come from. Built for what we can become.</p>
+      </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="ledger" id="problem" aria-labelledby="problem-h">
+      <p class="tag">The problem</p>
+      <div class="body">
+        <h2 id="problem-h">The creator economy grew up. <em>The infrastructure serving it didn&rsquo;t.</em></h2>
+        <div class="two">
+          <div>
+            <p class="k">Creators</p>
+            <p>Directors, musicians and animators are building careers, not one-off projects. Self-employment runs 48% among musicians, 65% among writers and 63% among animators. The work gets assembled across projects, relationships and deal structures that rarely run as one system.</p>
+            <p class="kicker-line">The work compounds. The career doesn&rsquo;t.</p>
+          </div>
+          <div>
+            <p class="k">Brands</p>
+            <p>U.S. creator ad spend is expected to reach $44B in 2026. Brands speaking to specific cultural audiences need directors and artists who know that language, and finding the right creators is their top creator-marketing challenge. Measurement and operating tools lag the spend.</p>
+            <p class="kicker-line">The talent exists. The infrastructure doesn&rsquo;t.</p>
+          </div>
+        </div>
+        <p class="note">Sources: BLS Occupational Outlook Handbook (self-employment by occupation); IAB 2025 Creator Economy Ad Spend and Strategy Report.</p>
+      </div>
+    </section>
+
+    <!-- Company -->
+    <section class="ledger" id="company" aria-labelledby="company-h">
+      <p class="tag">The company</p>
+      <div class="body">
+        <h2 id="company-h">One house, <em>two engines.</em></h2>
+        <div class="two">
+          <div>
+            <p class="k">The studio &middot; earning today</p>
+            <p>Original films, series, animation and music, plus brand and creator services. Every project tests the workflows, deal structures and creator paths the platform will run on, and brings in the brands the platform will serve.</p>
+          </div>
+          <div>
+            <p class="k">Threshold &middot; in build</p>
+            <p>The platform independent Creators use to develop a project, see where it stands and find the way into paid work. Institutions license it to run creative career programs. This round funds it.</p>
+          </div>
+        </div>
+        <ol class="loop" aria-label="How the two engines feed each other">
+          <li>Studio work draws brands.</li>
+          <li>Brands book culturally fluent Creators.</li>
+          <li>Creators come in through Threshold and grow there.</li>
+          <li>Platform and services revenue funds new work.</li>
+        </ol>
+        <p class="loop-back">Then back to the start. Every project can generate operating insight, commercial value or owned IP.</p>
+
+        <div class="rows" aria-label="What is open today">
+          <div class="row"><h4>Idu House Studio</h4><span class="chip live">Live</span><p>Original IP across film, series, animation and music.</p></div>
+          <div class="row"><h4>Brand Services</h4><span class="chip live">Live</span><p>Brand films, music videos, campaigns and commercial creative for external brands.</p></div>
+          <div class="row"><h4>Creator Services</h4><span class="chip live">Live</span><p>Story development, personal brand, production support and career infrastructure for individual Creators. No ownership and no equity taken.</p></div>
+          <div class="row"><h4>Threshold</h4><span class="chip build">In build</span><p>The creator platform, free to start for Creators and licensed to institutions.</p></div>
+          <div class="row"><h4>A physical home for Creators</h4><span class="chip later">Later stage</span><p>Co-working, studios and community access. A later-stage build; no site has been chosen.</p></div>
+        </div>
+        <details>
+          <summary>The ecosystem at full build</summary>
+          <div class="inner">
+            <p class="prose">At full build, each part of the house funds or feeds the next, around a creative campus with space, support, community and opportunity under one roof.</p>
+            <div class="tbl mid">
+              <table>
+                <thead><tr><th>Part</th><th>Role in the system</th><th>Feeds</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Brand Production</strong></td><td>Revenue, relationships and production capability</td><td>Revenue funds infrastructure</td></tr>
+                  <tr><td><strong>Physical space</strong></td><td>Studios, coworking, events and shared infrastructure</td><td>Infrastructure supports Creators</td></tr>
+                  <tr><td><strong>Creator Services</strong></td><td>Hands-on support to develop and execute projects</td><td>Creators develop projects and IP</td></tr>
+                  <tr><td><strong>Original IP</strong></td><td>Film, TV, music, manga and animation that build long-term value</td><td>Projects attract audiences and partners</td></tr>
+                  <tr><td><strong>Community and events</strong></td><td>Showcases, screenings, workshops and cultural programming</td><td>Visibility creates momentum</td></tr>
+                  <tr><td><strong>Audience, partners, opportunity</strong></td><td>Visibility, partnerships, jobs and revenue</td><td>Opportunity creates more growth</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="prose"><strong>Three ways people engage.</strong> The supported path, open now, gives Creators hands-on help while they keep ownership. The experiential path brings artists, audiences and brands together through screenings, showcases and workshops. The independent path gives Creators studios, equipment and shared space through membership once the campus exists.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Threshold -->
+    <section class="ledger" id="threshold" aria-labelledby="threshold-h">
+      <p class="tag">The platform</p>
+      <div class="body">
+        <h2 id="threshold-h">Threshold, <em>from Idu House.</em></h2>
+        <div class="prose">
+          <p>A threshold is the stone at the door. Threshold is the way in for independent Creators: an honest read on a project, what it needs most right now, and the next three moves, matched to real paths forward. Creators start free. Institutions license it for their programs.</p>
+        </div>
+        <h3>The workflow layer connecting creative development to opportunity</h3>
+        <div class="tbl wide">
+          <table>
+            <thead><tr><th>Stage</th><th>What Threshold does</th><th>What it creates</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Profile</strong></td><td>Captures a Creator&rsquo;s experience, skills, interests, goals and body of work</td><td>A living creative identity</td></tr>
+              <tr><td><strong>Develop</strong></td><td>Turns ideas into structured projects with goals, needs, collaborators and next steps</td><td>Clearer, more actionable projects</td></tr>
+              <tr><td><strong>Prepare</strong></td><td>Gives an honest read on where a project stands and the next three moves</td><td>Visible signals of progress</td></tr>
+              <tr><td><strong>Match</strong></td><td>Connects Creators and projects with relevant opportunities, collaborators, programs and partners</td><td>Better-fit opportunities</td></tr>
+              <tr><td><strong>Execute</strong></td><td>Tracks project activity, milestones, participation and proof of work</td><td>A record of real creative experience</td></tr>
+              <tr><td><strong>Measure</strong></td><td>Gives institutions and partners visibility into engagement, development and outcomes</td><td>Actionable program insight</td></tr>
+              <tr><td><strong>Extend</strong></td><td>Connects Creators to Idu House services, productions, events, studio resources and commercial work</td><td>A pathway beyond the platform</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Threshold connects the people, programs, studios and opportunities already serving Creators rather than replacing them. Technology supports the journey; Idu House surrounds it with people, services and real-world work. Capabilities shown reflect the intended product direction.</p>
+        <div class="two">
+          <div>
+            <p class="k">Where it stands</p>
+            <p>In build. Core flows are designed and the assessment questions and scoring rules are written. The private beta opens with film Creators first; music and original IP follow. During beta, a person on our team reviews every read before it goes out.</p>
+          </div>
+          <div>
+            <p class="k">What compounds</p>
+            <p>Creative-specific workflow depth, permissioned first-party project and outcome data, institutional outcomes, repeated commercial and studio transactions, and relationships across Creators, employers and institutions. AI enables the system. It is not the moat by itself.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why now -->
+    <section class="ledger" id="now" aria-labelledby="now-h">
+      <p class="tag">Why now</p>
+      <div class="body">
+        <h2 id="now-h">Creator spend, career readiness and project work are <em>converging.</em></h2>
+        <div class="stats">
+          <div class="stat"><span class="fig num">$44B</span><p>U.S. creator ad spend expected in 2026, up from $37B projected for 2025. Finding the right creators is brands&rsquo; top creator-marketing challenge.</p></div>
+          <div class="stat"><span class="fig num">48, 65, 63%</span><p>Self-employment among musicians, writers and animators. Creative careers are assembled project by project.</p></div>
+          <div class="stat"><span class="fig num">83% / 24%</span><p>Institutions in a 2025 NACE poll implementing career-readiness competencies, against the share with an assessment plan.</p></div>
+          <div class="stat"><span class="fig num">84%</span><p>Members of the Class of 2025 who took part in an internship, co-op or other experiential-learning program.</p></div>
+        </div>
+        <p class="note">Sources: IAB 2025 Creator Economy Ad Spend; NACE 2025 quick poll and Class of 2025 survey; BLS Occupational Outlook Handbook.</p>
+      </div>
+    </section>
+
+    <!-- Market -->
+    <section class="ledger" id="market" aria-labelledby="market-h">
+      <p class="tag">The market</p>
+      <div class="body">
+        <h2 id="market-h">Five revenue lines, <em>each sized on its own.</em></h2>
+        <p class="prose">We size each line independently rather than adding overlapping industry spend into one number.</p>
+        <div class="tbl wide">
+          <table>
+            <thead><tr><th>Line</th><th>Market context</th><th>Idu revenue unit</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Brand Services</strong></td><td>$44B U.S. creator ad spend expected in 2026 (IAB)</td><td>About $150K per mature annual brand account</td></tr>
+              <tr><td><strong>Creator Services</strong></td><td>About 544K jobs across four core U.S. creative occupation groups (BLS)</td><td>About $7.5K per active client per year</td></tr>
+              <tr><td><strong>Threshold licensing</strong></td><td>$171M to $228M modeled higher-education TAM, plus workforce and enterprise</td><td>$20K to $200K+ per year by scope</td></tr>
+              <tr><td><strong>Physical home</strong></td><td>Sized by site capacity once a site is chosen</td><td>Memberships, studio rental and events</td></tr>
+              <tr><td><strong>IP licensing and distribution</strong></td><td>$87.5B U.S. motion picture and video production; $22.3B sound recording (Census)</td><td>Portfolio level, not modeled per title</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Market figures are context and are not additive. Idu revenue units are management assumptions.</p>
+
+        <h3>Threshold, bottom up</h3>
+        <div class="tbl wide">
+          <table>
+            <thead><tr><th>Segment</th><th>Buyer universe</th><th>Modeled opportunity</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Higher education</strong></td><td>3,802 U.S. degree-granting institutions (NCES/IPEDS); 2,349 grant bachelor&rsquo;s degrees</td><td>$171M to $228M TAM at $45K to $60K institutional ACV; $106M to $141M SAM proxy</td></tr>
+              <tr><td><strong>Workforce and government</strong></td><td>About 550 local workforce development boards (DOL/WIOA)</td><td>$11M to $33M, before providers, states and economic development buyers</td></tr>
+              <tr><td><strong>Enterprise</strong></td><td>23,709 U.S. establishments with 500+ employees, an upper-bound research universe (Census CBP)</td><td>$200K+ ACV hypothesis. The swing factor for a $500M+ combined market</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Three-year operating target: 40 to 45 Threshold customers and about $2.8M exit ARR. Institution counts are externally sourced; ACVs are management pricing hypotheses.</p>
+      </div>
+    </section>
+
+    <!-- Position -->
+    <section class="ledger" id="position" aria-labelledby="position-h">
+      <p class="tag">Where we stand</p>
+      <div class="body">
+        <h2 id="position-h">A creative-specific layer in an established, <em>fragmented market.</em></h2>
+        <div class="rows">
+          <div class="row"><h4>Studios and agencies</h4><span></span><p>Full infrastructure, extractive deal terms, generalist rosters.</p></div>
+          <div class="row"><h4>Career-tech and freelance marketplaces</h4><span></span><p>Horizontal and transactional, with no creative development or IP path.</p></div>
+          <div class="row"><h4>Collectives and direct-to-consumer creator brands</h4><span></span><p>Creator-aligned but scoped to one function, with no brand-side or institutional flow.</p></div>
+          <div class="row"><h4>Idu House</h4><span class="chip live">Us</span><p>Services, software and an IP studio in one house, with Creator-owned deals.</p></div>
+        </div>
+        <details>
+          <summary>Capability comparison</summary>
+          <div class="inner">
+            <p class="prose">Existing platforms prove institutions buy recruiting, readiness and experiential-learning software. Threshold brings those workflows to creative project development.</p>
+            <div class="tbl wide">
+              <table>
+                <thead><tr><th>Capability</th><th>Threshold</th><th>Handshake</th><th>Riipen</th><th>Suitable / NACE Ready</th><th>Symplicity</th><th>Parker Dewey</th></tr></thead>
+                <tbody>
+                  <tr><td>Project and idea readiness</td><td>Core, planned MVP</td><td>Not publicly core</td><td>Adjacent</td><td>Adjacent (competency)</td><td>Adjacent</td><td>Not publicly core</td></tr>
+                  <tr><td>Career-readiness measurement</td><td>Planned core</td><td>Adjacent</td><td>Adjacent</td><td>Core</td><td>Core / adjacent</td><td>Adjacent</td></tr>
+                  <tr><td>Opportunity and talent matching</td><td>Planned core</td><td>Core</td><td>Core</td><td>Adjacent</td><td>Core</td><td>Core</td></tr>
+                  <tr><td>Project-based work</td><td>Planned core</td><td>Adjacent</td><td>Core</td><td>Not core</td><td>Adjacent</td><td>Core</td></tr>
+                  <tr><td>Cohort and program administration</td><td>Planned</td><td>Adjacent</td><td>Core</td><td>Core</td><td>Core</td><td>Limited</td></tr>
+                  <tr><td>Outcomes and engagement reporting</td><td>Planned</td><td>Adjacent</td><td>Core</td><td>Core</td><td>Core</td><td>Limited</td></tr>
+                  <tr><td>Creative-specific project workflow</td><td>Core positioning</td><td>Not publicly core</td><td>Horizontal</td><td>Horizontal</td><td>Horizontal</td><td>Horizontal</td></tr>
+                  <tr><td>Integrated Idu services and studio opportunity</td><td>Core Idu model</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="note">Labels reflect public product positioning, not an audited feature comparison.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Traction -->
+    <section class="ledger" id="traction" aria-labelledby="traction-h">
+      <p class="tag">Traction</p>
+      <div class="body">
+        <h2 id="traction-h">Shipping while the larger plan <em>finds its capital.</em></h2>
+        <figure class="reel-fig">
+          <div class="reel-frame">
+            <video class="reel" autoplay muted loop playsinline preload="metadata"
+                   poster="assets/reel-poster.jpg" aria-label="Idu House reel">
+              <source src="assets/reel-1080.mp4" type="video/mp4">
+            </video>
+            <button class="reel-play" type="button" aria-pressed="false" hidden>Play reel</button>
+          </div>
+          <script>
+            (function () {
+              var frame = document.currentScript.previousElementSibling;
+              var video = frame.querySelector('.reel');
+              var btn = frame.querySelector('.reel-play');
+              var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+              function sync() {
+                var playing = !video.paused;
+                btn.textContent = playing ? 'Pause reel' : 'Play reel';
+                btn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+              }
+              function apply(reduce) {
+                if (reduce) {
+                  video.removeAttribute('autoplay');
+                  video.pause();
+                  btn.hidden = false;
+                } else {
+                  btn.hidden = true;
+                  video.setAttribute('autoplay', '');
+                  video.play().catch(function () {});
+                }
+                sync();
+              }
+              btn.addEventListener('click', function () {
+                if (video.paused) { video.play().catch(function () {}); } else { video.pause(); }
+              });
+              video.addEventListener('play', sync);
+              video.addEventListener('pause', sync);
+              apply(mq.matches);
+              if (mq.addEventListener) { mq.addEventListener('change', function (e) { apply(e.matches); }); }
+            })();
+          </script>
+          <figcaption class="k">The Idu House reel.</figcaption>
+        </figure>
+        <div class="rows">
+          <div class="row"><h4>Original work</h4><span class="chip live">Live</span><p>Like Father, Like Sons, our first feature, has a live campaign at lfls.iduhouse.com, with donations through our fiscal sponsor. The companion short, Like Father, is finishing post.</p></div>
+          <div class="row"><h4>Brand work</h4><span class="chip live">Booked</span><p>Two paid commissions booked in October 2026. A Celsius spec commercial produced at broadcast quality.</p></div>
+          <div class="row"><h4>Audience</h4><span class="chip live">Live</span><p>Mailbox, the Idu House newsletter, has been publishing on Substack since September 2026. A rebuilt iduhouse.com went live in October.</p></div>
+          <div class="row"><h4>Platform</h4><span class="chip build">In build</span><p>Threshold&rsquo;s core flows are designed and its assessment questions and scoring rules are written. The private beta opens with film Creators first.</p></div>
+          <div class="row"><h4>Format validated</h4><span class="chip later">Paused</span><p>Sound Sessions ran a pilot session that validated the format and aesthetic. The program is paused while the team prioritizes creative output and commercial pipeline, and restarts on funded operations.</p></div>
+          <div class="row"><h4>In motion</h4><span class="chip build">Developing</span><p>A public access and YouTube show in development. Animation IP with worldbuilding and character work complete. Short film concepts matched with directorial leads. Active partnership conversations.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slate -->
+    <section class="ledger" id="slate" aria-labelledby="slate-h">
+      <p class="tag">The slate</p>
+      <div class="body">
+        <h2 id="slate-h">The IP that <em>proves the model.</em></h2>
+        <div class="slate">
+          <div class="item"><span class="t">Like Father, Like Sons<span class="yr">2027</span></span><span class="f">Feature film</span><span class="chip build">Pre-production</span></div>
+          <div class="item"><span class="t">Like Father<span class="yr">2026</span></span><span class="f">Short film</span><span class="chip build">Finishing post</span></div>
+          <div class="item"><span class="t">Between You and Me<span class="yr">2026</span></span><span class="f">Short film</span><span class="chip build">Post-production</span></div>
+          <div class="item"><span class="t">Ight So Boom<span class="yr">2026</span></span><span class="f">TV series, eight 30-minute episodes</span><span></span></div>
+          <div class="item"><span class="t">Chronoshade</span><span class="f">Anime-style one-hour pilot</span><span class="chip later">Development</span></div>
+          <div class="item"><span class="t">Hit Me</span><span class="f">TV series, one-hour episodes</span><span class="chip later">Development</span></div>
+          <div class="item"><span class="t">Emerge</span><span class="f">Animated feature</span><span class="chip later">Development</span></div>
+        </div>
+        <p class="note">Each project is capitalized on its own, outside the studio raise. See Capital below.</p>
+      </div>
+    </section>
+
+    <!-- Model -->
+    <section class="ledger" id="model" aria-labelledby="model-h">
+      <p class="tag">How we make money</p>
+      <div class="body">
+        <h2 id="model-h">Two lines today. <em>Five at full build.</em></h2>
+        <div class="two">
+          <div>
+            <p class="k">Today &middot; bootstrapped</p>
+            <p><strong>Brand Services.</strong> About $45K average project, three projects per account per year, plus about $15K annual retainer where it applies. Roughly $150K per mature account.</p>
+            <p><strong>Creator Services.</strong> About $2.5K average engagement, about three a year. Roughly $7.5K per active client.</p>
+          </div>
+          <div>
+            <p class="k">This round adds</p>
+            <p><strong>Threshold licensing.</strong> Recurring licenses to universities, workforce organizations, government and enterprise. Land with a paid pilot, then expand.</p>
+            <p><strong>Later:</strong> a physical home with $39, $99 and $199 monthly memberships plus studio rental and events, and IP licensing, distribution, sync and royalties, modeled at portfolio level.</p>
+          </div>
+        </div>
+        <div class="tbl mid">
+          <table>
+            <thead><tr><th>Threshold scope</th><th class="r">Pricing hypothesis</th></tr></thead>
+            <tbody>
+              <tr><td>Paid pilot</td><td class="r">$5K to $15K</td></tr>
+              <tr><td>Department or program</td><td class="r">$20K to $35K per year</td></tr>
+              <tr><td>Institution</td><td class="r">$45K to $60K per year</td></tr>
+              <tr><td>System or multi-campus</td><td class="r">$80K to $150K per year</td></tr>
+              <tr><td>Enterprise</td><td class="r">$200K+ per year</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">All Idu pricing figures are management hypotheses until validated through paid transactions.</p>
+      </div>
+    </section>
+
+    <!-- GTM -->
+    <section class="ledger" id="gtm" aria-labelledby="gtm-h">
+      <p class="tag">Go to market</p>
+      <div class="body">
+        <h2 id="gtm-h">Land with a program. Prove it. <em>Expand across the institution.</em></h2>
+        <div class="two">
+          <div>
+            <p class="k">Beachhead</p>
+            <p>Midwest universities, creative and business programs, and workforce partners.</p>
+          </div>
+          <div>
+            <p class="k">Motion</p>
+            <p><strong>Land</strong> through founder-led discovery, a scoped design partner and a $5K to $15K paid pilot. <strong>Prove</strong> it on activation, engagement, opportunities routed and projects completed. <strong>Expand</strong> from department to institution to system, and from workforce program to board or region.</p>
+          </div>
+        </div>
+        <div>
+          <p class="lead-k">Planning funnel, first cohort</p>
+          <div class="bars" role="list" aria-label="Planning funnel">
+            <div class="bar-row" role="listitem"><span class="lbl">Named target accounts</span><span class="track"><span class="fill" style="--w: 100%"></span></span><span class="val">100</span></div>
+            <div class="bar-row" role="listitem"><span class="lbl">Discovery meetings</span><span class="track"><span class="fill" style="--w: 30%"></span></span><span class="val">30</span></div>
+            <div class="bar-row" role="listitem"><span class="lbl">Qualified opportunities</span><span class="track"><span class="fill" style="--w: 15%"></span></span><span class="val">15</span></div>
+            <div class="bar-row" role="listitem"><span class="lbl">Pilot proposals</span><span class="track"><span class="fill" style="--w: 8%"></span></span><span class="val">8</span></div>
+            <div class="bar-row" role="listitem"><span class="lbl">Paid pilots</span><span class="track"><span class="fill" style="--w: 4%"></span></span><span class="val">4</span></div>
+            <div class="bar-row" role="listitem"><span class="lbl">Annual conversions</span><span class="track"><span class="fill" style="--w: 2.5%"></span></span><span class="val">2 to 3</span></div>
+          </div>
+        </div>
+        <div class="two">
+          <div>
+            <p class="k">Planning sales cycles</p>
+            <div class="tbl">
+              <table>
+                <tbody>
+                  <tr><td>Paid pilot</td><td class="r">2 to 4 months</td></tr>
+                  <tr><td>Institution</td><td class="r">4 to 9 months</td></tr>
+                  <tr><td>System or enterprise</td><td class="r">6 to 12+ months</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <p class="k">Institution payback</p>
+            <div class="tbl">
+              <table>
+                <thead><tr><th>CAC</th><th class="r">Payback</th></tr></thead>
+                <tbody>
+                  <tr><td>$20K</td><td class="r">6 months</td></tr>
+                  <tr><td>$35K</td><td class="r">11 months</td></tr>
+                  <tr><td>$50K</td><td class="r">15 months</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="note">At a $52.5K modeled ACV and 75% modeled gross margin. Payback = CAC &divide; (ACV &times; GM &divide; 12).</p>
+          </div>
+        </div>
+        <details>
+          <summary>Initial customer profiles</summary>
+          <div class="inner">
+            <div class="tbl mid">
+              <table>
+                <thead><tr><th>Segment</th><th>Champion</th><th>Economic buyer</th></tr></thead>
+                <tbody>
+                  <tr><td>Higher education</td><td>Program chair, career services, experiential learning lead</td><td>Dean, VP Student Success</td></tr>
+                  <tr><td>Workforce and government</td><td>Workforce program director</td><td>Board executive director, agency leadership</td></tr>
+                  <tr><td>Enterprise</td><td>Creative ops, brand or talent leader</td><td>Marketing or creative executive</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <p class="note">Sales cycles, funnel and CAC figures are management planning assumptions, not historical performance. Real conversion data replaces them after the first cohort.</p>
+      </div>
+    </section>
+
+    <!-- Capital -->
+    <section class="ledger" id="capital" aria-labelledby="capital-h">
+      <p class="tag">Capital</p>
+      <div class="body">
+        <h2 id="capital-h">We raise lean. <em>The projects raise their own.</em></h2>
+        <div class="two">
+          <div>
+            <p class="k">Company raise &middot; platform, product, studio</p>
+            <p class="statement num">$1.5M pre-seed</p>
+            <p>Post-money SAFE on the Y Combinator standard form, $5M cap, about 30% at conversion. Funds a senior BizDev hire, Threshold development, core studio infrastructure, early IP development and operating infrastructure.</p>
+          </div>
+          <div>
+            <p class="k">Per-project capital &middot; continuous</p>
+            <p class="statement num">$25K to $200K per project</p>
+            <p>Seed&amp;Spark for film and animation, Wefunder for larger raises. A target of 6 to 8 projects across Years 1 to 3, raising $385K to $950K in total. Each project sits in its own LLC, the studio keeps majority equity, and nothing dilutes the studio cap table. Any revenue-share offer to backers goes through securities counsel first.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projections -->
+    <section class="ledger" id="projections" aria-labelledby="proj-h">
+      <p class="tag">Projections</p>
+      <div class="body">
+        <h2 id="proj-h">Year 1 validation. Year 2 break-even target. <em>Year 3 operating leverage.</em></h2>
+        <div class="years">
+          <div class="year">
+            <span class="k">Year 1 &middot; Validation</span>
+            <span class="big num">$1.0M</span>
+            <ul>
+              <li>2 revenue lines live</li>
+              <li>Threshold MVP plus 3 to 5 paid pilots</li>
+              <li>Senior BizDev hire and a flexible production network</li>
+            </ul>
+          </div>
+          <div class="year">
+            <span class="k">Year 2 &middot; Repeatability</span>
+            <span class="big num">$2.1M</span>
+            <ul>
+              <li>3 revenue lines live</li>
+              <li>Threshold at 10 to 15 customers, about $500K</li>
+              <li>Core team of 5 to 7</li>
+              <li>EBITDA break-even target</li>
+            </ul>
+          </div>
+          <div class="year">
+            <span class="k">Year 3 &middot; Scale</span>
+            <span class="big num">$6.0M</span>
+            <ul>
+              <li>All 5 revenue lines live</li>
+              <li>40 to 45 Threshold customers, about $2.8M exit ARR</li>
+              <li>Physical home open; team of 10 to 12</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Where the revenue comes from</h3>
+        <div class="bridge" aria-label="Revenue by line and year, in thousands of dollars">
+          <div>
+            <h4>Year 1 <span>$1,000K</span></h4>
+            <div class="bars">
+              <div class="bar-row"><span class="lbl">Brand Services</span><span class="track"><span class="fill" style="--w: 35.42%"></span></span><span class="val">$850K</span></div>
+              <div class="bar-row"><span class="lbl">Creator Services</span><span class="track"><span class="fill" style="--w: 6.25%"></span></span><span class="val">$150K</span></div>
+              <div class="bar-row zero"><span class="lbl">Threshold</span><span class="track"></span><span class="val">Not yet</span></div>
+              <div class="bar-row zero"><span class="lbl">Physical home</span><span class="track"></span><span class="val">Not yet</span></div>
+              <div class="bar-row zero"><span class="lbl">IP</span><span class="track"></span><span class="val">Not yet</span></div>
+            </div>
+          </div>
+          <div>
+            <h4>Year 2 <span>$2,100K</span></h4>
+            <div class="bars">
+              <div class="bar-row"><span class="lbl">Brand Services</span><span class="track"><span class="fill" style="--w: 56.25%"></span></span><span class="val">$1,350K</span></div>
+              <div class="bar-row"><span class="lbl">Creator Services</span><span class="track"><span class="fill" style="--w: 10.42%"></span></span><span class="val">$250K</span></div>
+              <div class="bar-row"><span class="lbl">Threshold</span><span class="track"><span class="fill" style="--w: 20.83%"></span></span><span class="val">$500K</span></div>
+              <div class="bar-row zero"><span class="lbl">Physical home</span><span class="track"></span><span class="val">Not yet</span></div>
+              <div class="bar-row zero"><span class="lbl">IP</span><span class="track"></span><span class="val">Not yet</span></div>
+            </div>
+          </div>
+          <div>
+            <h4>Year 3 <span>$6,000K</span></h4>
+            <div class="bars">
+              <div class="bar-row"><span class="lbl">Brand Services</span><span class="track"><span class="fill" style="--w: 100%"></span></span><span class="val">$2,400K</span></div>
+              <div class="bar-row"><span class="lbl">Creator Services</span><span class="track"><span class="fill" style="--w: 18.75%"></span></span><span class="val">$450K</span></div>
+              <div class="bar-row"><span class="lbl">Threshold</span><span class="track"><span class="fill" style="--w: 95.83%"></span></span><span class="val">$2,300K</span></div>
+              <div class="bar-row"><span class="lbl">Physical home</span><span class="track"><span class="fill" style="--w: 16.67%"></span></span><span class="val">$400K</span></div>
+              <div class="bar-row"><span class="lbl">IP</span><span class="track"><span class="fill" style="--w: 18.75%"></span></span><span class="val">$450K</span></div>
+            </div>
+          </div>
+        </div>
+        <p class="note">All bars share one scale, set by the largest line in Year 3. Services fund the build, Threshold shifts the margin, and five lines run by Year 3.</p>
+
+        <div class="tbl mid">
+          <table>
+            <thead><tr><th>$000s</th><th class="r">Year 1</th><th class="r">Year 2</th><th class="r">Year 3</th></tr></thead>
+            <tbody>
+              <tr><td>Revenue</td><td class="r">1,000</td><td class="r">2,100</td><td class="r">6,000</td></tr>
+              <tr><td>Gross margin</td><td class="r">38.8%</td><td class="r">51.3%</td><td class="r">59.8%</td></tr>
+              <tr><td>Operating expenses</td><td class="r">820</td><td class="r">1,000</td><td class="r">2,550</td></tr>
+              <tr class="total"><td>EBITDA</td><td class="r">(433)</td><td class="r">78</td><td class="r">1,038</td></tr>
+              <tr><td>EBITDA margin</td><td class="r">(43.3%)</td><td class="r">3.7%</td><td class="r">17.3%</td></tr>
+              <tr><td>Core headcount</td><td class="r">4</td><td class="r">5 to 7</td><td class="r">10 to 12</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Targeting EBITDA break-even or positive in Year 2. This is an EBITDA plan, not a net-income forecast. Margin, hiring and expense figures are management assumptions.</p>
+
+        <details>
+          <summary>Year 1 by quarter</summary>
+          <div class="inner">
+            <div class="tbl wide">
+              <table>
+                <thead><tr><th>$000s</th><th class="r">Q1</th><th class="r">Q2</th><th class="r">Q3</th><th class="r">Q4</th><th class="r">Year 1</th></tr></thead>
+                <tbody>
+                  <tr><td>Revenue</td><td class="r">150</td><td class="r">200</td><td class="r">275</td><td class="r">375</td><td class="r">1,000</td></tr>
+                  <tr><td>Cost of goods sold</td><td class="r">92</td><td class="r">123</td><td class="r">168</td><td class="r">230</td><td class="r">613</td></tr>
+                  <tr><td>Gross profit</td><td class="r">58</td><td class="r">78</td><td class="r">107</td><td class="r">145</td><td class="r">388</td></tr>
+                  <tr><td>Operating expenses</td><td class="r">180</td><td class="r">200</td><td class="r">210</td><td class="r">230</td><td class="r">820</td></tr>
+                  <tr class="total"><td>EBITDA</td><td class="r">(122)</td><td class="r">(123)</td><td class="r">(103)</td><td class="r">(85)</td><td class="r">(433)</td></tr>
+                  <tr><td>Core headcount</td><td class="r">3</td><td class="r">3</td><td class="r">4</td><td class="r">4</td><td class="r">4</td></tr>
+                  <tr><td>Paid Threshold customers</td><td class="r">0</td><td class="r">0</td><td class="r">0</td><td class="r">0 to 2</td><td class="r">3 to 5 pilots</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="note">Includes about $110K of studio and infrastructure CapEx in Year 1. A 24-month monthly cash model is in progress.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Threshold software metrics</summary>
+          <div class="inner">
+            <div class="tbl wide">
+              <table>
+                <thead><tr><th>Metric</th><th>Today</th><th>Year 1</th><th>Year 2 plan</th><th>Year 3 plan</th></tr></thead>
+                <tbody>
+                  <tr><td>ARR (run rate)</td><td>$0</td><td>Pilot-dependent</td><td>About $630K exit</td><td>About $2.8M exit</td></tr>
+                  <tr><td>Recognized software revenue</td><td>$0</td><td>Pilot-dependent</td><td>About $500K</td><td>About $2.3M</td></tr>
+                  <tr><td>Software customers</td><td>0</td><td>3 to 5 paid pilots or design partners</td><td>10 to 15</td><td>40 to 45</td></tr>
+                  <tr><td>Software gross margin</td><td>Not yet applicable</td><td>Measured from first pilots</td><td>About 75% target</td><td>About 80% target</td></tr>
+                  <tr><td>CAC</td><td>Not yet applicable</td><td>Founder-led, no paid acquisition</td><td>$20K to $50K planning range</td><td>Measured</td></tr>
+                  <tr><td>Retention and churn</td><td>Not yet applicable</td><td>Not yet applicable</td><td>First renewal cohort begins</td><td>Measured from cohorts</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="note">Threshold is pre-launch. Benchmark context: about 81% subscription gross margin, 88% gross revenue retention and 101% net revenue retention (Benchmarkit 2025 medians).</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Milestones -->
+    <section class="ledger" id="milestones" aria-labelledby="ms-h">
+      <p class="tag">What this unlocks</p>
+      <div class="body">
+        <h2 id="ms-h">Build in phases. <em>Ship what serves both sides.</em></h2>
+        <div class="years">
+          <div class="year">
+            <span class="k">Year 1 &middot; Validation</span>
+            <ul>
+              <li>Senior BizDev hire and a lean operating team</li>
+              <li>Threshold MVP live with 50 to 100 Creators</li>
+              <li>First 3 to 5 institutional pilots</li>
+              <li>4 to 8 commercial client retainers</li>
+              <li>First 1 to 2 flagship IP projects developed toward financing</li>
+              <li>$1M revenue target</li>
+            </ul>
+          </div>
+          <div class="year">
+            <span class="k">Year 2 &middot; Repeatability</span>
+            <ul>
+              <li>250 to 500 Creators on Threshold</li>
+              <li>10 to 15 institutional customers</li>
+              <li>Institutional dashboard and admin tools; matching, contracting and payments expanded</li>
+              <li>$2.1M revenue and EBITDA break-even target</li>
+              <li>First flagship IP enters distribution</li>
+              <li>Seed round considered on traction</li>
+            </ul>
+          </div>
+          <div class="year">
+            <span class="k">Year 3 &middot; Scale</span>
+            <ul>
+              <li>1,000+ Creators on Threshold</li>
+              <li>40 to 45 institutional customers, multi-year and system licenses</li>
+              <li>API and enterprise partner integrations</li>
+              <li>$6M revenue target with all five lines active</li>
+              <li>First physical home for Creators open</li>
+              <li>Series A or strategic capital considered if metrics justify</li>
+            </ul>
+          </div>
+        </div>
+        <p class="note">Creator counts are operating targets, not contracted demand. Each phase advances on Creator adoption, institutional demand and paid customer evidence.</p>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="ledger" id="team" aria-labelledby="team-h">
+      <p class="tag">Team</p>
+      <div class="body">
+        <h2 id="team-h">Creative, commercial and technical experience <em>under one roof.</em></h2>
+        <div class="team">
+          <div class="person">
+            <span class="role">Co-Founder &amp; CEO</span>
+            <h3>Aaron Caldwell</h3>
+            <p class="line">The customer and the builder.</p>
+            <p>A technology leader, filmmaker and recording artist with 10+ years leading technical teams of 40+ across enterprise technology, service delivery and software implementation. He wrote and directed the short Like Father and brings firsthand creator insight to the platform he leads.</p>
+            <p class="prev">Previously Apple, The Shipyard, Chipotle</p>
+          </div>
+          <div class="person">
+            <span class="role">Co-Founder &amp; COO</span>
+            <h3>Amadin Agho</h3>
+            <p class="line">Trained for this exact business.</p>
+            <p>More than a decade building and scaling products, programs and communities. At Apple he helped scale a digital platform across 19 countries and six languages; since then, AI operations, SaaS, commercialization and partnerships. MBA from UC Davis in Operations and Technology Management, and a DJ and creative producer for more than a decade.</p>
+            <p class="prev">Previously Apple, Argona Partners, Stanford d.school</p>
+          </div>
+          <div class="person">
+            <span class="role">Head of Creator Services</span>
+            <h3>Dell Harris</h3>
+            <p class="line">Has lived what we&rsquo;re fixing.</p>
+            <p>Twenty years as a signed artist, songwriter and community builder, including work with Universal Motown/Republic, and 12 years at Apple in customer experience and operational systems. Runs Jazz Ting Radio and leads artist development and creator services.</p>
+            <p class="prev">Previously Apple, Universal Motown/Republic, Hampton University</p>
+          </div>
+        </div>
+        <p class="also">Also on the team: <strong>Ashley Hartmann</strong>, Marketing &amp; Community Lead, and <strong>Isaiah Hartmann</strong>, Partnership &amp; Brand Growth Lead.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- The round -->
+  <div class="roof" aria-hidden="true">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" focusable="false">
+      <polygon points="0,60 720,2 1440,60" fill="#1B1B1B"></polygon>
+      <polyline points="0,60 720,2 1440,60" fill="none" stroke="#7C4A2E" stroke-width="3" vector-effect="non-scaling-stroke"></polyline>
+    </svg>
+  </div>
+  <div class="dark">
+    <div class="wrap">
+      <section class="ledger" id="round" aria-labelledby="round-h">
+        <p class="tag">The round</p>
+        <div class="body">
+          <h2 id="round-h">$1.5M on a post-money SAFE <em>at a $5M cap.</em></h2>
+          <p class="muted" style="max-width: 62ch;">Target of 18 to 24 months of lean operating runway, subject to revenue ramp and hiring cadence. It funds commercial growth, Threshold validation and the first stage of Idu House&rsquo;s scale.</p>
+          <div class="bars funds" aria-label="Use of funds">
+            <div class="bar-row"><span class="lbl">Revenue engine and hiring<small>Founders stay lean; senior BizDev and partnerships lead; light contract support</small></span><span class="track"><span class="fill" style="--w: 100%"></span></span><span class="val">$420K &middot; 28%</span></div>
+            <div class="bar-row"><span class="lbl">IP development<small>First 1 to 2 flagship projects packaged toward financing</small></span><span class="track"><span class="fill" style="--w: 60.71%"></span></span><span class="val">$255K &middot; 17%</span></div>
+            <div class="bar-row"><span class="lbl">Threshold development<small>Platform build, pilot implementation, institutional sales support</small></span><span class="track"><span class="fill" style="--w: 60.71%"></span></span><span class="val">$255K &middot; 17%</span></div>
+            <div class="bar-row"><span class="lbl">Studio infrastructure<small>Production equipment, workstations, software</small></span><span class="track"><span class="fill" style="--w: 42.86%"></span></span><span class="val">$180K &middot; 12%</span></div>
+            <div class="bar-row"><span class="lbl">Contingency<small>Production overruns, accelerated hires, reinvestment</small></span><span class="track"><span class="fill" style="--w: 39.29%"></span></span><span class="val">$165K &middot; 11%</span></div>
+            <div class="bar-row"><span class="lbl">Marketing and community<small>Brand campaigns and customer acquisition</small></span><span class="track"><span class="fill" style="--w: 32.14%"></span></span><span class="val">$135K &middot; 9%</span></div>
+            <div class="bar-row"><span class="lbl">Legal, admin, operations<small>Contracts, IP protection, bookkeeping, compliance</small></span><span class="track"><span class="fill" style="--w: 21.43%"></span></span><span class="val">$90K &middot; 6%</span></div>
+          </div>
+          <div class="two rule-top">
+            <div>
+              <p class="k">What this round buys</p>
+              <p>A lean operating team with a senior BizDev hire. Brand Services and Creator Services scaled. Threshold moved into institutional pilots. The first 1 to 2 flagship IP projects developed toward financing. Core production and operating infrastructure in place.</p>
+            </div>
+            <div>
+              <p class="k">What it does not cover</p>
+              <p>Full-time salaries for the whole founding team, a major facility build or individual film and animation budgets. Productions are financed per project through equity or revenue-share crowdfunding, grants, sponsorships and production financing.</p>
+            </div>
+          </div>
+          <p class="muted small">Founder-funded to date. No outside equity, convertible notes or SAFEs have been issued, and there has been no non-dilutive funding. This is Idu House&rsquo;s first outside capital.</p>
+        </div>
+      </section>
+
+      <section class="ledger" id="contact" aria-labelledby="contact-h">
+        <p class="tag">Talk with us</p>
+        <div class="body">
+          <h2 id="contact-h">We&rsquo;re building the platform Creators <em>have been waiting for.</em></h2>
+          <div class="contacts">
+            <div class="contact">
+              <span class="nm">Aaron Caldwell</span>
+              <span class="rl">Co-Founder &amp; CEO</span>
+              <div class="email"><span>aaron@iduhouse.com</span><button class="copy" type="button" id="copy-aaron" data-copy="aaron@iduhouse.com">Copy</button></div>
+            </div>
+            <div class="contact">
+              <span class="nm">Amadin Agho</span>
+              <span class="rl">Co-Founder &amp; COO</span>
+              <div class="email"><span>amadin@iduhouse.com</span><button class="copy" type="button" id="copy-amadin" data-copy="amadin@iduhouse.com">Copy</button></div>
+            </div>
+          </div>
+          <p class="note">Shared in confidence with people Idu House knows. Please don&rsquo;t forward. Projections, pricing and market sizing marked as assumptions are management estimates, not results or guarantees.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>Idu House &middot; A Possibility Engine for Creators</span>
+    <span>Confidential &middot; October 2026</span>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.copy').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var text = btn.getAttribute('data-copy');
+      var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1800); };
+      var fallback = function () {
+        var span = btn.previousElementSibling;
+        var range = document.createRange();
+        range.selectNodeContents(span);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        btn.textContent = 'Selected';
+        setTimeout(function () { btn.textContent = 'Copy'; }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(fallback);
+      } else {
+        fallback();
+      }
+    });
+  });
+</script>
+</body>
+</html>

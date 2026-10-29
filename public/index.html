@@ -1,0 +1,845 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Idu House is a Black-owned independent studio and a creative house for the next generation of diasporic storytellers.">
+<link rel="canonical" href="https://this.iduhouse.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Idu House">
+<meta property="og:title" content="This Is Idu House">
+<meta property="og:description" content="Idu House is a Black-owned independent studio and a creative house for the next generation of diasporic storytellers.">
+<meta property="og:url" content="https://this.iduhouse.com/">
+<meta property="og:image" content="https://this.iduhouse.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A frame from the Idu House reel">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="This Is Idu House">
+<meta name="twitter:description" content="Idu House is a Black-owned independent studio and a creative house for the next generation of diasporic storytellers.">
+<meta name="twitter:image" content="https://this.iduhouse.com/assets/og-image.jpg">
+<link rel="icon" href="assets/favicon.png" type="image/png" sizes="150x150">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<title>This Is Idu House</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Marcellus&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+  :root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  img, video { max-width: 100%; }
+  [hidden] { display: none !important; }
+
+  /* Layout: the house rhythm from iduhouse.com. Ebony, sand, ebony, sand, ebony, gold footer.
+     A ledger inside the sand bands; the name gets its own dark band; a roof peak marks the step into the close. */
+  :root {
+    --ebony: #1B1B1B;
+    --sand: #F6F1E9;
+    --sand-deep: #EDE4D5;
+    --clay: #7C4A2E;
+    --gold: #D4A055;
+    --sage: #A6B59F;
+    --ink: #1B1B1B;
+    --ink-muted: #5B544B;
+    --rule: rgba(124, 74, 46, 0.24);
+    --on-dark: #F6F1E9;
+    --on-dark-muted: rgba(246, 241, 233, 0.74);
+    --rule-dark: rgba(212, 160, 85, 0.30);
+    --display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    --label: "Marcellus", "Optima", "Candara", Georgia, serif;
+    --body: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+    color-scheme: light;
+  }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--sand);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  p, ul, ol, h1, h2, h3 { margin: 0; }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  .wrap {
+    max-width: 1160px;
+    margin-inline: auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  @media (min-width: 720px) {
+    .wrap {
+      padding-left: max(40px, env(safe-area-inset-left, 0px));
+      padding-right: max(40px, env(safe-area-inset-right, 0px));
+    }
+  }
+
+  h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; }
+  h2 { font-size: clamp(2rem, 4.4vw, 3.05rem); line-height: 1.06; max-width: 20ch; }
+  h2 em, h1 em { font-style: italic; }
+  .label {
+    font-family: var(--label);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.74rem;
+  }
+  .note { font-size: 0.86rem; color: var(--ink-muted); max-width: 70ch; }
+
+  /* Hero */
+  .hero { background: var(--ebony); color: var(--on-dark); }
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-block: 22px;
+    border-bottom: 1px solid var(--rule-dark);
+  }
+  .mark { font-family: var(--display); font-style: italic; font-weight: 600; font-size: 1.5rem; color: var(--gold); text-decoration: none; }
+  .top nav { display: flex; gap: 22px; flex-wrap: wrap; justify-content: flex-end; }
+  .top nav a { color: var(--on-dark-muted); text-decoration: none; }
+  .top nav a:hover { color: var(--gold); }
+  @media (max-width: 640px) { .top nav a.opt { display: none; } }
+
+  .hero-body {
+    padding-block: clamp(64px, 10vw, 128px) clamp(64px, 9vw, 112px);
+    display: grid;
+    gap: 26px;
+  }
+  .hero .eyebrow { color: var(--sage); }
+  .hero h1 {
+    font-size: clamp(2.8rem, 8vw, 6rem);
+    line-height: 0.98;
+    letter-spacing: -0.012em;
+    max-width: 13ch;
+  }
+  .hero h1 em { color: var(--gold); display: block; }
+  .hero .lede { max-width: 60ch; font-size: clamp(1.08rem, 1.6vw, 1.24rem); color: var(--on-dark-muted); }
+  .hero .lede strong { color: var(--on-dark); font-weight: 600; }
+  .actions { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; margin-top: 6px; }
+  .btn {
+    display: inline-block;
+    font-family: var(--label);
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--gold);
+    color: var(--ebony);
+    padding: 15px 26px 14px;
+    border-radius: 2px;
+  }
+  .btn:hover { background: var(--on-dark); }
+  .link {
+    font-family: var(--label);
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--gold);
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 3px;
+  }
+  .link:hover { color: var(--on-dark); border-color: var(--on-dark); }
+
+  /* Ledger */
+  .ledger {
+    display: grid;
+    grid-template-columns: minmax(150px, 210px) minmax(0, 1fr);
+    gap: 20px 56px;
+    padding-block: clamp(56px, 8vw, 96px);
+    border-top: 1px solid var(--rule);
+    scroll-margin-top: 16px;
+  }
+  .wrap > .ledger:first-child { border-top: 0; }
+  .tag { color: var(--clay); padding-top: 10px; align-self: start; }
+  .body { min-width: 0; display: grid; gap: 28px; align-content: start; }
+  .prose { display: grid; gap: 1em; max-width: 62ch; }
+  @media (max-width: 800px) {
+    .ledger { grid-template-columns: 1fr; gap: 14px; }
+    .tag { padding-top: 0; }
+  }
+
+  /* Doors */
+  .doors { display: grid; }
+  .door {
+    display: grid;
+    grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
+    gap: 10px 40px;
+    padding-block: 26px;
+    border-top: 1px solid var(--rule);
+  }
+  .door:last-child { border-bottom: 1px solid var(--rule); }
+  .door .who { color: var(--clay); }
+  .door h3 { font-size: 1.8rem; line-height: 1.1; font-weight: 600; font-style: italic; margin-top: 4px; }
+  .door .say { font-family: var(--display); font-style: italic; font-size: 1.3rem; line-height: 1.25; color: var(--clay); margin-top: 8px; max-width: 18ch; }
+  .door .what { display: grid; gap: 12px; align-content: start; max-width: 62ch; min-width: 0; }
+  .offers { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .offers li {
+    font-size: 0.86rem;
+    padding: 5px 11px;
+    border: 1px solid var(--rule);
+    background: var(--sand-deep);
+    border-radius: 2px;
+  }
+  .go {
+    justify-self: start;
+    font-family: var(--label);
+    font-size: 0.74rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--clay);
+    text-decoration: none;
+    border-bottom: 1px solid var(--clay);
+    padding-bottom: 2px;
+  }
+  .go:hover { color: var(--ink); border-color: var(--ink); }
+  @media (max-width: 640px) { .door { grid-template-columns: 1fr; } .door .say { max-width: none; } }
+
+  .pull {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(1.45rem, 2.4vw, 1.85rem);
+    line-height: 1.25;
+    color: var(--clay);
+    max-width: 34ch;
+  }
+
+  /* Chips */
+  .chip {
+    font-family: var(--label);
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 4px 9px 3px;
+    border-radius: 2px;
+    border: 1px solid var(--ink);
+    white-space: nowrap;
+    justify-self: start;
+  }
+  .chip.live { background: var(--ink); color: var(--sand); }
+  .chip.build { border-color: var(--clay); color: var(--clay); }
+  .chip.later { border-style: dashed; border-color: var(--ink-muted); color: var(--ink-muted); }
+
+  /* Work */
+  .work {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 40px;
+  }
+  .piece {
+    display: grid;
+    gap: 8px;
+    align-content: start;
+    padding-block: 22px 26px;
+    border-top: 1px solid var(--clay);
+    min-width: 0;
+  }
+  .piece .meta { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; color: var(--ink-muted); }
+  .piece h3 { font-size: 2rem; line-height: 1.05; font-style: italic; font-weight: 600; }
+  .piece p { max-width: 52ch; }
+  .piece .go { margin-top: 4px; }
+  @media (max-width: 720px) { .work { grid-template-columns: 1fr; } }
+
+  /* The name (dark band) */
+  .name-band { background: var(--ebony); color: var(--on-dark); }
+  .name-band .ledger { border-top: 0; }
+  .name-band .tag { color: var(--gold); }
+  .name-word {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(4.5rem, 14vw, 9.5rem);
+    line-height: 0.85;
+    color: var(--gold);
+    letter-spacing: -0.02em;
+  }
+  .name-word span {
+    display: block;
+    font-family: var(--label);
+    font-style: normal;
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    color: var(--sage);
+    margin-top: 14px;
+  }
+  .name-cols {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px 36px;
+  }
+  .name-cols > div { display: grid; gap: 10px; align-content: start; border-top: 1px solid var(--rule-dark); padding-top: 14px; min-width: 0; }
+  .name-cols .k { color: var(--gold); }
+  .name-cols p { color: var(--on-dark-muted); font-size: 0.98rem; }
+  .name-band .pull { color: var(--on-dark); max-width: 30ch; }
+  @media (max-width: 860px) { .name-cols { grid-template-columns: 1fr; } }
+
+  /* Ecosystem cycle */
+  .cycle {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: auto auto auto;
+    gap: 0;
+  }
+  .node {
+    display: grid;
+    gap: 6px;
+    align-content: start;
+    padding: 18px 20px 20px;
+    min-width: 0;
+    border-top: 1px solid var(--clay);
+  }
+  .node .n { font-family: var(--display); font-style: italic; font-size: 1.9rem; line-height: 1; color: var(--clay); }
+  .node h3 { font-family: var(--body); font-weight: 600; font-size: 1.02rem; line-height: 1.3; }
+  .node p { font-size: 0.93rem; color: var(--ink-muted); }
+  .node .next {
+    font-family: var(--label);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-top: 6px;
+  }
+  .node .next::before { content: attr(data-arrow) "\00a0\00a0"; font-family: var(--body); font-size: 0.95rem; letter-spacing: 0; }
+  .node:nth-child(1) { grid-area: 1 / 1; }
+  .node:nth-child(2) { grid-area: 1 / 2; }
+  .node:nth-child(3) { grid-area: 1 / 3; }
+  .node:nth-child(4) { grid-area: 3 / 3; }
+  .node:nth-child(5) { grid-area: 3 / 2; }
+  .node:nth-child(6) { grid-area: 3 / 1; }
+  .hub {
+    grid-area: 2 / 1 / 3 / 4;
+    margin: 6px 0 18px;
+    padding: 22px 20px;
+    border: 1px solid var(--clay);
+    background: var(--sand-deep);
+    text-align: center;
+    display: grid;
+    gap: 4px;
+  }
+  .hub strong { font-family: var(--display); font-style: italic; font-weight: 600; font-size: 1.9rem; line-height: 1.05; }
+  .hub span { color: var(--clay); }
+  @media (max-width: 760px) {
+    .cycle { grid-template-columns: 1fr; }
+    .node:nth-child(n), .hub { grid-area: auto; }
+    .hub { order: -1; margin: 0 0 8px; }
+    .node { padding-inline: 0; }
+  }
+
+  .paths { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px 32px; }
+  .path { display: grid; gap: 8px; align-content: start; border-top: 1px solid var(--rule); padding-top: 14px; min-width: 0; }
+  .path h3 { font-size: 1.55rem; line-height: 1.1; font-weight: 600; font-style: italic; }
+  .path p { font-size: 0.97rem; }
+  @media (max-width: 760px) { .paths { grid-template-columns: 1fr; } }
+
+  .platform {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 6px 18px;
+    align-items: baseline;
+    border-top: 1px solid var(--clay);
+    border-bottom: 1px solid var(--clay);
+    padding-block: 18px;
+  }
+  .platform h3 { font-size: 1.6rem; line-height: 1.1; font-weight: 600; font-style: italic; }
+  .platform p { grid-column: 1 / -1; max-width: 66ch; }
+
+  /* Years */
+  .years { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+  .year { display: grid; gap: 10px; align-content: start; border-top: 1px solid var(--clay); padding-top: 14px; min-width: 0; }
+  .year .k { color: var(--clay); }
+  .year h3 { font-size: 1.7rem; line-height: 1.1; font-weight: 600; font-style: italic; }
+  .year ul { padding-left: 1.1em; display: grid; gap: 7px; font-size: 0.96rem; }
+  .year ul li::marker { color: var(--clay); }
+  @media (max-width: 760px) { .years { grid-template-columns: 1fr; } }
+
+  /* Points */
+  .points { list-style: none; padding: 0; display: grid; }
+  .points li {
+    font-family: var(--display);
+    font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+    line-height: 1.15;
+    padding-block: 14px;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 2.2rem minmax(0, 1fr);
+    gap: 10px;
+    align-items: baseline;
+  }
+  .points li:last-child { border-bottom: 1px solid var(--rule); }
+  .points li::before {
+    content: "";
+    width: 0.6rem;
+    height: 0.6rem;
+    background: var(--gold);
+    transform: rotate(45deg) translateY(-0.18rem);
+  }
+
+  /* Team */
+  .team { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+  .person { display: grid; gap: 6px; align-content: start; border-top: 1px solid var(--clay); padding-top: 16px; min-width: 0; }
+  .person h3 { font-size: 1.7rem; line-height: 1.1; font-weight: 600; }
+  .person .role { color: var(--clay); }
+  .person p { font-size: 0.97rem; }
+  .also { color: var(--ink-muted); font-size: 0.97rem; }
+  .also strong { color: var(--ink); font-weight: 600; }
+  @media (max-width: 860px) { .team { grid-template-columns: 1fr; } }
+
+  /* Roof + close */
+  .roof { display: block; width: 100%; height: clamp(26px, 4.2vw, 58px); background: var(--sand); }
+  .roof svg { display: block; width: 100%; height: 100%; }
+  .close { background: var(--ebony); color: var(--on-dark); }
+  .close .wrap { padding-block: clamp(56px, 8vw, 104px); display: grid; gap: 22px; }
+  .close .eyebrow { color: var(--gold); }
+  .close h2 { color: var(--on-dark); max-width: 16ch; }
+  .close h2 em { color: var(--gold); }
+  .close p { color: var(--on-dark-muted); max-width: 56ch; }
+  .email { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; color: var(--on-dark); }
+  .email span { user-select: all; }
+  .copy {
+    font-family: var(--label);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    padding: 5px 10px 4px;
+    cursor: pointer;
+  }
+  .copy:hover { background: var(--gold); color: var(--ebony); }
+
+  .foot { background: var(--gold); color: var(--ebony); }
+  .foot .wrap {
+    padding-block: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 24px;
+  }
+  .foot a { text-decoration: none; }
+  .foot a:hover { text-decoration: underline; }
+
+  /* Reel */
+  .reel-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; background: var(--ebony); }
+  .reel { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .reel-play {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--label);
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    background: rgba(27, 27, 27, 0.72);
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    padding: 14px 24px 13px;
+    cursor: pointer;
+  }
+  .reel-play:hover { background: var(--gold); color: var(--ebony); }
+  .reel-band { background: var(--ebony); }
+  @media (min-width: 1024px) { .reel-band .reel-frame { max-height: 80vh; } }
+</style>
+</head>
+<body>
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="top">
+      <a class="mark" href="#top">Idu House</a>
+      <nav class="label" aria-label="Sections">
+        <a class="opt" href="#name">The name</a>
+        <a class="opt" href="#what">What we do</a>
+        <a class="opt" href="#work">The work</a>
+        <a href="#start">Start a project</a>
+      </nav>
+    </div>
+    <div class="hero-body">
+      <p class="eyebrow label">Said EE-doo &middot; A Possibility Engine for Creators</p>
+      <h1>Stories with origin. <em>Built for legacy.</em></h1>
+      <p class="lede">Idu House is a <strong>Black-owned independent studio</strong> and a creative house for the next generation of diasporic storytellers. We make films, series, animation and music, create culturally fluent work for brands, and connect independent artists with paid work on terms that let them keep what they make.</p>
+      <div class="actions">
+        <a class="btn" href="https://iduhouse.com/general-contact">Start a project</a>
+        <a class="link" href="#work">See what we&rsquo;re making</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="reel-band" aria-label="Idu House reel">
+  <div class="reel-frame">
+    <video class="reel" autoplay muted loop playsinline preload="metadata"
+           poster="assets/reel-poster.jpg" aria-label="Idu House reel">
+      <source src="assets/reel-1080.mp4" type="video/mp4">
+    </video>
+    <button class="reel-play" type="button" aria-pressed="false" hidden>Play reel</button>
+  </div>
+  <script>
+    (function () {
+      var frame = document.currentScript.previousElementSibling;
+      var video = frame.querySelector('.reel');
+      var btn = frame.querySelector('.reel-play');
+      var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+      function sync() {
+        var playing = !video.paused;
+        btn.textContent = playing ? 'Pause reel' : 'Play reel';
+        btn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+      }
+      function apply(reduce) {
+        if (reduce) {
+          video.removeAttribute('autoplay');
+          video.pause();
+          btn.hidden = false;
+        } else {
+          btn.hidden = true;
+          video.setAttribute('autoplay', '');
+          video.play().catch(function () {});
+        }
+        sync();
+      }
+      btn.addEventListener('click', function () {
+        if (video.paused) { video.play().catch(function () {}); } else { video.pause(); }
+      });
+      video.addEventListener('play', sync);
+      video.addEventListener('pause', sync);
+      apply(mq.matches);
+      if (mq.addEventListener) { mq.addEventListener('change', function (e) { apply(e.matches); }); }
+    })();
+  </script>
+</section>
+
+<main>
+  <div class="wrap">
+    <section class="ledger" id="why" aria-labelledby="why-h">
+      <p class="tag label">Why we exist</p>
+      <div class="body">
+        <h2 id="why-h">Talent is everywhere. <em>Access isn&rsquo;t.</em></h2>
+        <div class="prose">
+          <p>Plenty of creators have the ideas and the ability to make meaningful work. What they lack is affordable space, experienced collaborators, production resources, industry relationships or a clear path forward. Most creative systems only show up once someone has already proven themselves. Idu House is built to show up earlier.</p>
+          <p>Our work is rooted in Afrofuturism and diasporic storytelling, with a particular commitment to creators and communities that have been underfunded, overlooked or left out of traditional creative institutions, and it&rsquo;s built for collaboration across cultures, industries and forms.</p>
+        </div>
+        <p class="pull">Talent is evenly distributed. Opportunity is not. So we build the rooms where they meet.</p>
+      </div>
+    </section>
+  </div>
+  <section class="name-band" id="name" aria-labelledby="name-h">
+    <div class="wrap">
+      <div class="ledger">
+        <p class="tag label">The name</p>
+        <div class="body">
+          <h2 id="name-h" class="name-word">Idu<span>Pronounced EE-doo</span></h2>
+          <div class="name-cols">
+            <div>
+              <p class="k label">Where it comes from</p>
+              <p>Idu is an older historical name for the Edo people and Edo land in present-day Nigeria. It doesn&rsquo;t translate to &ldquo;origin.&rdquo; The Edo word closer to that is isi. But in Edo cosmology, the land once called Idu is understood as the origin of the world and the core of existence. That&rsquo;s why we chose it. Idu House exists to be a place where things begin.</p>
+            </div>
+            <div>
+              <p class="k label">Rooted in Afrofuturism</p>
+              <p>Afrofuturism imagines futures built from African history, identity, culture and invention, with Black people and the diaspora as the future&rsquo;s architects. It asks what the future could look like if we built from our own histories instead of leaving them behind. That question sits at the heart of the house.</p>
+            </div>
+            <div>
+              <p class="k label">The word house</p>
+              <p>A house is more than a building. It&rsquo;s where people gather, trade knowledge, keep culture, challenge one another and imagine what comes next. We didn&rsquo;t want another institution that felt inaccessible or run by gatekeepers. We wanted a home for possibility.</p>
+            </div>
+          </div>
+          <p class="pull">Rooted in where we come from. Built for what we can become.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="ledger" id="believe" aria-labelledby="believe-h">
+      <p class="tag label">What we believe</p>
+      <div class="body">
+        <h2 id="believe-h">Five points <em>we steer by.</em></h2>
+        <ul class="points">
+          <li>Independent Art Matters</li>
+          <li>Everything for the Good of the Art</li>
+          <li>Tell the Stories that Need to be Told</li>
+          <li>Stay Rooted but Let The Branches Grow</li>
+          <li>More Than a Title</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="ledger" id="what" aria-labelledby="what-h">
+      <p class="tag label">What we do</p>
+      <div class="body">
+        <h2 id="what-h">One house. <em>Three ways in.</em></h2>
+        <div class="doors">
+          <div class="door">
+            <div>
+              <p class="who label">For brands and organizations</p>
+              <h3>Brand Production</h3>
+              <p class="say">Creative that moves with culture, from idea to final cut.</p>
+            </div>
+            <div class="what">
+              <p>For brands, startups, venues and cultural organizations that want to move with culture, with more behind it than a filled calendar. One team from strategy through post, so you&rsquo;re never stitching vendors together. Every project is scoped to your goals and budget, and your spend puts real work in the hands of emerging creators.</p>
+              <ul class="offers" aria-label="What we make">
+                <li>Brand films</li><li>Social campaigns</li><li>Live sessions</li><li>Event recaps</li><li>Interviews</li>
+              </ul>
+              <a class="go" href="https://iduhouse.com/general-contact">Start a project</a>
+            </div>
+          </div>
+          <div class="door">
+            <div>
+              <p class="who label">For artists and storytellers</p>
+              <h3>Creator Services</h3>
+              <p class="say">We don&rsquo;t want a piece of what you build. We help you build it better.</p>
+            </div>
+            <div class="what">
+              <p>Most artist services take ownership or equity. We don&rsquo;t. Whether you&rsquo;re developing your music, your story or your personal brand, you stay in control while we bring the strategy, the structure and the people to execute your next move. Led by Dell Harris and Aaron Caldwell. Every engagement starts with a conversation, not a contract.</p>
+              <ul class="offers" aria-label="What you get">
+                <li>Story and character development</li><li>Personal brand strategy</li><li>Rollout and release strategy</li><li>A&amp;R and creative direction</li><li>Distribution and platform setup</li><li>Playlist pitching and campaigns</li>
+              </ul>
+              <a class="go" href="https://iduhouse.com/general-contact">Tell us what you&rsquo;re building</a>
+            </div>
+          </div>
+          <div class="door">
+            <div>
+              <p class="who label">For audiences</p>
+              <h3>Original work</h3>
+              <p class="say">Stories of our own, told from the diaspora.</p>
+            </div>
+            <div class="what">
+              <p>Films, television, animation, music, manga and visual art that Idu House develops and owns, told from an Afrofuturist perspective rooted in the diaspora. These projects build long-term cultural and economic value and give our creative community room to collaborate across disciplines.</p>
+              <a class="go" href="#work">See the work</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ledger" id="work" aria-labelledby="work-h">
+      <p class="tag label">In the making</p>
+      <div class="body">
+        <h2 id="work-h">What&rsquo;s on the table <em>right now.</em></h2>
+        <div class="work">
+          <article class="piece">
+            <div class="meta"><span class="chip live">Campaign open</span><span class="label">Original &middot; Feature film</span></div>
+            <h3>Like Father, Like Sons</h3>
+            <p>Our first feature, written and produced by Aaron Caldwell and Damon M. Smith. Donations are open through our fiscal sponsor.</p>
+            <a class="go" href="https://lfls.iduhouse.com">Fuel the trip</a>
+          </article>
+          <article class="piece">
+            <div class="meta"><span class="chip build">Finishing post</span><span class="label">Original &middot; Short film</span></div>
+            <h3>Like Father</h3>
+            <p>The opening of the feature, shot first. Written and directed by Aaron Caldwell.</p>
+          </article>
+          <article class="piece">
+            <div class="meta"><span class="chip live">Live</span><span class="label">Letters &middot; Newsletter</span></div>
+            <h3>Mailbox</h3>
+            <p>Letters from the house: what we&rsquo;re making, who we&rsquo;re making it with and what we&rsquo;re learning along the way.</p>
+            <a class="go" href="https://mailbox.iduhouse.com">Read Mailbox</a>
+          </article>
+          <article class="piece">
+            <div class="meta"><span class="chip later">Pilot</span><span class="label">Culture &middot; Live music</span></div>
+            <h3>Sound Sessions</h3>
+            <p>A live session format for artists and the community around them. One pilot session so far.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="ledger" id="building" aria-labelledby="building-h">
+      <p class="tag label">What we&rsquo;re building</p>
+      <div class="body">
+        <h2 id="building-h">One house where <em>every part feeds the next.</em></h2>
+        <p class="prose">Commercial work earns revenue and relationships. Original IP builds long-term value. Creator services move people&rsquo;s work forward. Space gives access, and community brings people together. Connected, they make a system where more ideas become real and more creators build lasting futures from their work.</p>
+
+        <div class="cycle" role="list" aria-label="The Idu House ecosystem, in order">
+          <div class="node" role="listitem">
+            <span class="n">1</span>
+            <h3>Brand Production</h3>
+            <p>Commercial work generates revenue, relationships and production capability.</p>
+            <span class="next" data-arrow="&rarr;">Revenue funds infrastructure</span>
+          </div>
+          <div class="node" role="listitem">
+            <span class="n">2</span>
+            <h3>Physical space <span class="chip later">Later stage</span></h3>
+            <p>Studios, coworking, events and shared infrastructure create access.</p>
+            <span class="next" data-arrow="&rarr;">Infrastructure supports creators</span>
+          </div>
+          <div class="node" role="listitem">
+            <span class="n">3</span>
+            <h3>Creator Services</h3>
+            <p>Hands-on support helps creators develop and execute their projects.</p>
+            <span class="next" data-arrow="&darr;">Creators develop projects and IP</span>
+          </div>
+          <div class="node" role="listitem">
+            <span class="n">4</span>
+            <h3>Original IP</h3>
+            <p>Film, TV, music, manga, animation and more build long-term value.</p>
+            <span class="next" data-arrow="&larr;">Projects attract audiences and partners</span>
+          </div>
+          <div class="node" role="listitem">
+            <span class="n">5</span>
+            <h3>Community and events</h3>
+            <p>Showcases, screenings, workshops and cultural programming bring people together.</p>
+            <span class="next" data-arrow="&larr;">Visibility creates momentum</span>
+          </div>
+          <div class="node" role="listitem">
+            <span class="n">6</span>
+            <h3>Audience, partners and opportunity</h3>
+            <p>Visibility, partnerships, jobs and revenue feed the system.</p>
+            <span class="next" data-arrow="&uarr;">Opportunity creates more growth</span>
+          </div>
+          <div class="hub">
+            <strong>Idu House</strong>
+            <span class="label">Creative infrastructure and possibility engine</span>
+          </div>
+        </div>
+
+        <h3 class="label" style="color: var(--clay); font-family: var(--label); font-weight: 400;">Three ways people engage</h3>
+        <div class="paths">
+          <div class="path">
+            <span class="chip live">Open now</span>
+            <h3>The supported path</h3>
+            <p>Creators who want guidance work with experienced professionals to develop and execute their projects, and keep ownership of what they make.</p>
+          </div>
+          <div class="path">
+            <span class="chip later">Pilot</span>
+            <h3>The experiential path</h3>
+            <p>Artists, audiences, brands and communities come together through screenings, showcases, exhibitions, performances and workshops.</p>
+          </div>
+          <div class="path">
+            <span class="chip later">Later stage</span>
+            <h3>The independent path</h3>
+            <p>Creators who mainly need space get studios, equipment and shared creative environments through membership.</p>
+          </div>
+        </div>
+
+        <div class="platform">
+          <h3>Threshold</h3>
+          <span class="chip build">In development</span>
+          <p>Our creator platform, the thread through all of it. Threshold will help creators shape ideas into projects, see where they stand, find the right collaborators and opportunities, and build a record of the work they&rsquo;ve done, with a path into Idu House services, productions and partners.</p>
+        </div>
+        <p class="note">The long-term home is a physical creative campus with space, support, community and opportunity under one roof.</p>
+      </div>
+    </section>
+
+    <section class="ledger" id="going" aria-labelledby="going-h">
+      <p class="tag label">Where we&rsquo;re going</p>
+      <div class="body">
+        <h2 id="going-h">From an emerging studio to <em>a connected ecosystem.</em></h2>
+        <div class="years">
+          <div class="year">
+            <span class="k label">Year 1</span>
+            <h3>Build and prove</h3>
+            <ul>
+              <li>Launch the first version of Threshold with an initial creator community</li>
+              <li>Grow Brand Production and Creator Services</li>
+              <li>Deepen partnerships across creative, education, technology and industry</li>
+              <li>Develop our original IP toward production and distribution</li>
+              <li>Expand live programming and community events</li>
+            </ul>
+          </div>
+          <div class="year">
+            <span class="k label">Year 2</span>
+            <h3>Expand and repeat</h3>
+            <ul>
+              <li>Bring Threshold to a larger creator community and more institutions</li>
+              <li>Make creator development and opportunity matching repeatable</li>
+              <li>Bring our first flagship original project to market</li>
+              <li>Grow our network of employers, brands, studios, educators and distribution partners</li>
+            </ul>
+          </div>
+          <div class="year">
+            <span class="k label">Year 3</span>
+            <h3>Connect and scale</h3>
+            <ul>
+              <li>Connect creators, institutions, brands and studios through one ecosystem</li>
+              <li>Run multiple originals across development, production and distribution</li>
+              <li>Earn meaningful revenue from owned IP and creative partnerships</li>
+              <li>Open the first Idu House campus</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ledger" id="people" aria-labelledby="people-h">
+      <p class="tag label">The team</p>
+      <div class="body">
+        <h2 id="people-h">The people <em>in the house.</em></h2>
+        <div class="team">
+          <div class="person">
+            <p class="role label">Co-Founder &amp; CEO</p>
+            <h3>Aaron Caldwell</h3>
+            <p>Filmmaker, writer and recording artist who spent ten years leading technology teams, including at Apple. Wrote and directed Like Father.</p>
+          </div>
+          <div class="person">
+            <p class="role label">Co-Founder &amp; COO</p>
+            <h3>Amadin Agho</h3>
+            <p>Strategist, operator and DJ with more than a decade of building and scaling platforms, programs and communities, including at Apple.</p>
+          </div>
+          <div class="person">
+            <p class="role label">Head of Creator Services</p>
+            <h3>Dell Harris</h3>
+            <p>Twenty years as a signed artist, songwriter and community builder, including work with Universal Motown/Republic. Runs Jazz Ting Radio.</p>
+          </div>
+        </div>
+        <p class="also">With <strong>Ashley Hartmann</strong>, Marketing &amp; Community Lead, and <strong>Isaiah Hartmann</strong>, Partnership &amp; Brand Growth Lead.</p>
+      </div>
+    </section>
+  </div>
+
+  <div class="roof" aria-hidden="true">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" focusable="false">
+      <polygon points="0,60 720,2 1440,60" fill="#1B1B1B"></polygon>
+      <polyline points="0,60 720,2 1440,60" fill="none" stroke="#7C4A2E" stroke-width="3" vector-effect="non-scaling-stroke"></polyline>
+    </svg>
+  </div>
+  <section class="close" id="start" aria-labelledby="start-h">
+    <div class="wrap">
+      <p class="eyebrow label">Ready when you are</p>
+      <h2 id="start-h">Have something <em>to make?</em></h2>
+      <p>A campaign, a project of your own or a partnership. Tell us what you&rsquo;re trying to do and we&rsquo;ll take it from there.</p>
+      <div class="actions">
+        <a class="btn" href="https://iduhouse.com/general-contact">Start a project</a>
+        <a class="link" href="https://mailbox.iduhouse.com">Get Mailbox</a>
+      </div>
+      <div class="email"><span>info@iduhouse.com</span><button class="copy" type="button" id="copy-info" data-copy="info@iduhouse.com">Copy</button></div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap label">
+    <span>Idu House &middot; A Possibility Engine for Creators</span>
+    <a href="https://iduhouse.com">iduhouse.com</a>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.copy').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var text = btn.getAttribute('data-copy');
+      var reset = function () { setTimeout(function () { btn.textContent = 'Copy'; }, 1800); };
+      var fallback = function () {
+        var range = document.createRange();
+        range.selectNodeContents(btn.previousElementSibling);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        btn.textContent = 'Selected';
+        reset();
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { btn.textContent = 'Copied'; reset(); }).catch(fallback);
+      } else {
+        fallback();
+      }
+    });
+  });
+</script>
+</body>
+</html>

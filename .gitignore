@@ -1,0 +1,4 @@
+# Original reel and any other source media stay out of git
+source/*
+!source/.gitkeep
+.DS_Store
