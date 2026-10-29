@@ -1,12 +1,11 @@
 name: Deploy public page
 
-# Manual-only until Amadin approves going live. Once GitHub Pages is enabled
-# for this repo (Settings > Pages > Source: GitHub Actions), restore the push
-# trigger:
-#   push:
-#     branches: [main]
-#     paths: ["public/**", ".github/workflows/deploy-public.yml"]
 on:
+  push:
+    branches: [main]
+    paths:
+      - "public/**"
+      - ".github/workflows/deploy-public.yml"
   workflow_dispatch:
 
 permissions:
