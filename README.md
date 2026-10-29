@@ -45,8 +45,8 @@ Both `public/assets/` and `investor/assets/` need:
 
 | File | What it is |
 |---|---|
-| `favicon.png` | Square gold Idu House mark |
-| `apple-touch-icon.png` | 180 by 180 version of the same mark |
+| `favicon.png`, `favicon-32.png` | The gold house emblem on a transparent background, 192 and 32 px |
+| `apple-touch-icon.png` | The same emblem on ebony, 180 by 180 |
 | `og-image.jpg` | 1200 by 630 frame from the reel, used for link previews |
 
 The public page's canonical and Open Graph URLs are hard-coded in the `<head>` of `public/index.html`. Update them if the public hostname changes.
